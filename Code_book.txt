@@ -1,0 +1,32 @@
+Feature Selection 
+=================
+
+The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
+Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals. Also the magnitude of the three-dimensional signals were calculated using the Euclidean norm. 
+
+
+These signals were used to estimate variables of the feature vector for each pattern:  
+
+Time of accelerometer                        
+Time of gravity accelerometer                 
+Time of accelerometer jerk                     
+Time of gyroscope                             
+Time of gyroscope jerk                        
+Frequency of accelerometer                    
+Frequency of accelerometer jerk               
+Frequency of gyroscope                        
+
+
+The set of variables that were estimated from these signals are: 
+
+Mean: Mean value of the variable 
+Mean X: Mean value in the X direction of the variable
+Mean Y: Mean value in the Y direction of the variable
+Mean Y: Mean value in the Y direction of the variable
+
+Standard deviation: Standard deviation value of the variable
+Standard deviation X: Standard deviation value in the X direction of the variable
+Standard deviation Y: Standard deviation value in the Y direction of the variable
+Standard deviation Z: Standard deviation value in the Z direction of the variable
+
+
