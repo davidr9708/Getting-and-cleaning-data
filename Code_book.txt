@@ -4,29 +4,35 @@ Feature Selection
 The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
 Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals. Also the magnitude of the three-dimensional signals were calculated using the Euclidean norm. 
 
-
+#Data sets
+    1. Clean: Data set with all the values taken from each subject 
+    2. Resume: Data set with the summary of the values taken from each subject and each activity. 
+    
+    To summarize, I used the mean of the variable measured for that subject and activity 
+    
+#Variables measured    
 These signals were used to estimate variables of the feature vector for each pattern:  
 
-Time of accelerometer                        
-Time of gravity accelerometer                 
-Time of accelerometer jerk                     
-Time of gyroscope                             
-Time of gyroscope jerk                        
-Frequency of accelerometer                    
-Frequency of accelerometer jerk               
-Frequency of gyroscope                        
+    1. Subject: ID in the experiment of the participant
+    2. Activity: Activity measured
+    3. Time of accelerometer                        
+    4. Time of gravity accelerometer                 
+    5. Time of accelerometer jerk                     
+    6. Time of gyroscope                             
+    7. Time of gyroscope jerk                        
+    8. Frequency of accelerometer                     
+    9. Frequency of accelerometer jerk               
+    10. Frequency of gyroscope                        
 
+#Statistics measured
+    1. Mean: Mean value of the variable 
+    2. Mean X: Mean value in the X direction of the variable
+    3. Mean Y: Mean value in the Y direction of the variable
+    4. Mean Y: Mean value in the Y direction of the variable
 
-The set of variables that were estimated from these signals are: 
-
-Mean: Mean value of the variable 
-Mean X: Mean value in the X direction of the variable
-Mean Y: Mean value in the Y direction of the variable
-Mean Y: Mean value in the Y direction of the variable
-
-Standard deviation: Standard deviation value of the variable
-Standard deviation X: Standard deviation value in the X direction of the variable
-Standard deviation Y: Standard deviation value in the Y direction of the variable
-Standard deviation Z: Standard deviation value in the Z direction of the variable
+    5. Standard deviation: Standard deviation value of the variable
+    6. Standard deviation X: Standard deviation value in the X direction of the variable
+    7. Standard deviation Y: Standard deviation value in the Y direction of the variable
+    8. Standard deviation Z: Standard deviation value in the Z direction of the variable
 
 
