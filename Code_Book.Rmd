@@ -2,7 +2,6 @@ library(tidyverse)
 library(mgsub)
 #Cleaning
 ##Columms names
-rm(list=ls())
 Columm.names<-read.table('features.txt')
 
 ##Test set
