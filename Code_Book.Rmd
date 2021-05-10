@@ -50,5 +50,5 @@ Clean<-Clean %>% select(Subject, Activity, 1:66) %>%
 Resume<-Clean%>%group_by(Subject,Activity) %>% summarise_all(.funs = mean)
 
 ##Final data sets
-View(Clean)
-View(Resume)
+write.table(Clean, file="Clean_data_set.txt",row.names = FALSE)
+write.table(Resume, file="Summary_subjects_activity.txt",row.names = FALSE)
