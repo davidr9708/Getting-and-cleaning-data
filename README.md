@@ -1,4 +1,4 @@
-# Getting-and-cleaning-data
+# Human Activity Recognition Using Smartphones Data Set
 This is the project of the Getting and Cleaning Data Course in coursera described now:
 
 #Getting and Cleaning Data Course Project
