@@ -1,54 +1,59 @@
+# Packages
 library(tidyverse)
 library(mgsub)
-#Cleaning
-##Columms names
-Columm.names<-read.table('features.txt')
 
-##Test set
-X.Test<-read.table(file='X_test.txt')
-Activity.test<-read.table(file='y_test.txt')
-Subjects.test<-read.table(file = 'subject_test.txt')
+# Cleaning
+## Columns names
+Columm.names <- read.table('features.txt')
+ 
+## Test set
+X.Test <- read.table(file = 'X_test.txt')
+Activity.test <- read.table(file = 'y_test.txt')
+Subjects.test <- read.table(file = 'subject_test.txt')
 
-##Train set
-X.Train<-read.table(file='X_train.txt')
-Activity.train<-read.table(file='y_train.txt')
-Subjects.train<-read.table(file = 'subject_train.txt')
+## Train set
+X.Train <- read.table(file = 'X_train.txt')
+Activity.train <- read.table(file = 'y_train.txt')
+Subjects.train <- read.table(file = 'subject_train.txt')
 
-##Naming the columms
-names(X.Train)<-Columm.names[,2]
-names(X.Test)<-Columm.names[,2]
+## Naming the columns
+names(X.Train) <- Columm.names[,2]
+names(X.Test) <- Columm.names[,2]
 
-##Selecting columms
-x<-str_which(names(X.Test), "mean\\(\\)|std\\(\\)")
+## Selecting columms
+x <- str_which(names(X.Test), "mean\\(\\)|std\\(\\)")
 
 X.Test <- X.Test %>% select(x) %>%
           mutate(Activity = Activity.test, Subject=Subjects.test) 
 X.Train <- X.Train %>% select(x) %>% 
-          mutate( Activity=Activity.train, Subject= Subjects.train)
+          mutate( Activity = Activity.train, Subject = Subjects.train)
 
-##Joining the data sets
-Clean<-rbind(X.Test,X.Train) 
+## Joining the data sets
+Clean <- rbind(X.Test, X.Train) 
 
-##Changing columms' names
-Patterns<-c('^f','^t','Body','Body','Acc','Gyro','Mag', 
+## Changing columms' names
+Patterns <- c('^f','^t','Body','Body','Acc','Gyro','Mag', 
             'std', '-','\\(\\)','mean', 'Jerk','Gravity')
-Replacements<-c('Frequency of ','Time of ','','body ','accelerometer ',
+Replacements <- c('Frequency of ','Time of ','','body ','accelerometer ',
                'gyroscope ','magnitude ','- Standard deviation ','',' ', 
                '- Mean ','jerk ','gravity ')
 
-names(Clean)<-mgsub(names(Clean),Patterns,Replacements)
+names(Clean) <- mgsub(names(Clean), Patterns,Replacements)
 
-##Correct labels in activity
-numbers<-1:6 
-activities.labels<-c('WALKING','WALKING_UPSTAIRS','WALKING_DOWNSTAIRS',
+## Correct labels in activity
+numbers <- 1:6 
+activities.labels <- c('WALKING','WALKING_UPSTAIRS','WALKING_DOWNSTAIRS',
                      'SITTING','STANDING','LAYING')
 
-Clean<-Clean %>% select(Subject, Activity, 1:66) %>% 
-          mutate(Activity=mgsub(Activity, numbers,activities.labels))
+Clean <- Clean %>% 
+  select(Subject, Activity, 1:66) %>% 
+  mutate(Activity = mgsub(Activity, numbers, activities.labels))
 
-##Sumarizing
-Resume<-Clean%>%group_by(Subject,Activity) %>% summarise_all(.funs = mean)
+## Summarizing
+Resume <- Clean %>%
+  group_by(Subject,Activity) %>% 
+  summarise_all(.funs = mean)
 
-##Final data sets
-write.table(Clean, file="Clean_data_set.txt",row.names = FALSE)
-write.table(Resume, file="Summary_subjects_activity.txt",row.names = FALSE)
+## Final data sets
+write.table(Clean, file="Clean_data_set.txt", row.names = FALSE)
+write.table(Resume, file="Summary_subjects_activity.txt", row.names = FALSE)
